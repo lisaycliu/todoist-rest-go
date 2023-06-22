@@ -5,7 +5,7 @@ import "fmt"
 import "io/ioutil"
 
 const DefaultRestUrl string = "https://api.todoist.com/rest/v2"
-const DefaultSyncUrl string = "https://api.todoist.com/sync/v9"
+// const DefaultSyncUrl string = "https://api.todoist.com/sync/v9"
 
 type Client struct {
 	HttpClient *http.Client
