@@ -258,41 +258,41 @@ func (c *Client) UpdateTask(t *Task) error {
 	return nil
 }
 
-// func (c *Client) GetCompletedTasks() ([]CompletedTask, error) {
-// 	req, err := http.NewRequest("GET", DefaultSyncUrl+"/completed/get_all", nil)
-// 	if err != nil {
-// 		return nil, err
-// 	}
+func (c *Client) GetCompletedTasks() ([]CompletedTask, error) {
+	req, err := http.NewRequest("GET", DefaultSyncUrl+"/completed/get_all", nil)
+	if err != nil {
+		return nil, err
+	}
 
-// 	res, err := c.doRequest(req)
-// 	if err != nil {
-// 		return nil, err
-// 	}
+	res, err := c.doRequest(req)
+	if err != nil {
+		return nil, err
+	}
 
-// 	var ctr CompletedTaskResponse
-// 	var completedTasks []CompletedTask
+	var ctr CompletedTaskResponse
+	var completedTasks []CompletedTask
 
-// 	err = json.Unmarshal(res, &ctr)
-// 	if err != nil {
-// 		return nil, err
-// 	}
+	err = json.Unmarshal(res, &ctr)
+	if err != nil {
+		return nil, err
+	}
 
-// 	completedTasks = ctr.Items
+	completedTasks = ctr.Items
 
-// 	return completedTasks, nil
-// }
+	return completedTasks, nil
+}
 
-// func (c *Client) GetCompletedTask(id string) (*CompletedTask, error) {
-// 	completedTasks, err := c.GetCompletedTasks()
-// 	if err != nil {
-// 		return nil, err
-// 	}
+func (c *Client) GetCompletedTask(id string) (*CompletedTask, error) {
+	completedTasks, err := c.GetCompletedTasks()
+	if err != nil {
+		return nil, err
+	}
 
-// 	for _, ct := range completedTasks {
-// 		if ct.TaskId == id {
-// 			return &ct, nil
-// 		}
-// 	}
+	for _, ct := range completedTasks {
+		if ct.TaskId == id {
+			return &ct, nil
+		}
+	}
 
-// 	return nil, fmt.Errorf("completed task: %s not found", id)
-// }
+	return nil, fmt.Errorf("completed task: %s not found", id)
+}
